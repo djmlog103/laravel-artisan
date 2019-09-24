@@ -4,6 +4,10 @@ composer install --prefer-dist
 
 cp .env.example .env
 
-php artisan key:generate
+if [ $# -eq 0 ]
+  then
+    echo "No arguments supplied"
+    exit 1
+fi
 
-php vendor/bin/phpunit
+sh -c "php artisan $*"
